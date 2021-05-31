@@ -1,0 +1,22 @@
+{
+  "name": "moobank-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kodingworks/moobank-js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kodingworks/moobank-js/issues"
+  },
+  "homepage": "https://github.com/kodingworks/moobank-js#readme"
+}
