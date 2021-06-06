@@ -1,11 +1,8 @@
-import ClientInterface from "./client_interface";
-import RequestInterface from "./message/request_interface";
-import ParameterBag from "./parameter";
+import ClientInterface from './client_interface'
+import RequestInterface from './message/request_interface'
+import ParameterBag from './parameter'
 
 export default interface GatewayInterface {
-
-  constructor(client: ClientInterface, request: RequestInterface): any
-
   initialize(parameters: object): void
 
   getName(): string
@@ -15,5 +12,4 @@ export default interface GatewayInterface {
   getParameters(): ParameterBag
 
   setParameter(parameters: object): void
-
 }
