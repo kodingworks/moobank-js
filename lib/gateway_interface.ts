@@ -1,15 +1,17 @@
 import ClientInterface from './client_interface'
 import RequestInterface from './message/request_interface'
-import ParameterBag from './parameter'
+import Parameter from './parameter'
 
 export default interface GatewayInterface {
-  initialize(parameters: object): void
+  initialize(httpClient: ClientInterface, parameters?: object): void
 
   getName(): string
 
   getModuleName(): string
 
-  getParameters(): ParameterBag
+  getParameters(): Parameter
 
   setParameter(parameters: object): void
+
+  createRequest(request: RequestInterface, parameters?: object | Parameter): RequestInterface
 }

@@ -4,28 +4,44 @@ import GatewayInterface from './gateway_interface'
 import Parameter from './parameter'
 
 export default abstract class AbstractGateway implements GatewayInterface {
-  client: ClientInterface
+  httpClient: ClientInterface
   request: RequestInterface
   parameters: Parameter
 
-  constructor(client: ClientInterface, request: RequestInterface) {
-    this.client = client
-    this.request = request
+  constructor(parameters?: object) {
+    this.setParameter(parameters)
   }
 
-  initialize(parameters: object): void {
+  abstract getName(): string
+  abstract getModuleName(): string
+
+  initialize(httpClient: ClientInterface, parameters?: object|null): void {
+    this.httpClient = httpClient
     this.setParameter(parameters)
   }
   getParameters(): Parameter {
     return this.parameters
   }
-  setParameter(parameters: object): void {
-    this.parameters = new Parameter()
+  setParameter(parameters?: object): void {
+    if (! this.parameters) {
+      this.parameters = new Parameter()
+    }
 
-    Object.keys(parameters).forEach((key) => {
-      this.parameters.set(key, parameters[key])
-    })
+    if (parameters && Object.keys(parameters).length > 0) {
+      Object.keys(parameters).forEach((key) => {
+        this.parameters.set(key, parameters[key])
+      })
+    }
   }
-  abstract getName(): string
-  abstract getModuleName(): string
+  createRequest(request: RequestInterface, parameters?: object|Parameter) {
+    // set parameter for request
+    this.setParameter(parameters)
+
+    request.initialize(
+      this.httpClient,
+      this.parameters
+    )
+
+    return request
+  }
 }
