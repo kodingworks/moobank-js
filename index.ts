@@ -1,6 +1,6 @@
-import ClientInterface from "./lib/client_interface"
-import GatewayInterface from "./lib/gateway_interface"
-import RequestInterface from "./lib/message/request_interface"
+import ClientInterface from './lib/client_interface'
+import GatewayInterface from './lib/gateway_interface'
+import RequestInterface from './lib/message/request_interface'
 
 export default class Moobank {
   protected gateways: Array<GatewayInterface>
@@ -12,7 +12,7 @@ export default class Moobank {
   }
 
   getGateway(gateway: GatewayInterface) {
-    let filter = this.gateways.some(item => {
+    let filter = this.gateways.some((item) => {
       let objName: any = item.constructor['name'].toString()
       if (gateway instanceof objName) {
         return item
@@ -26,11 +26,14 @@ export default class Moobank {
     return null
   }
 
-  createGateway(gateway: GatewayInterface, client: ClientInterface, request: RequestInterface) {
-    let obj = gateway.constructor(client, request);
+  createGateway(
+    gateway: GatewayInterface,
+    client: ClientInterface
+  ) {
+    let obj = gateway.constructor(client)
     let objName = obj.constructor['name']
 
-    this.gateways[`${objName}`] = obj;
+    this.gateways[`${objName}`] = obj
 
     return obj
   }
