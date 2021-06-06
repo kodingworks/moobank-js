@@ -10,7 +10,7 @@ TODO:
 ```ts
 const moobank = new Moobank
 
-const moobankFactory = moobank.create(new MoobankMandiriMIB, new PuppeteerClient)
+const moobankFactory = moobank.createGateway(new MoobankMandiriMIB, new PuppeteerClient)
 moobankFactory.banking().balance()
 moobankFactory.banking().inquiry()
 ```
