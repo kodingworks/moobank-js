@@ -1,10 +1,14 @@
-export default class ParameterBag {
-  protected parameters: Object
+export default class Parameter {
+  protected parameters: object = {}
 
   constructor() {}
 
   all() {
-    return this.parameters
+    if (Object.keys(this.parameters).length > 0) {
+      return this.parameters
+    }
+
+    return {}
   }
 
   get(key: string, defaultValue?: any) {
