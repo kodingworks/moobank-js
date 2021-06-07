@@ -1,10 +1,10 @@
 import Moobank from '..'
 import AbstractGateway from '../lib/abstract_gateway'
-import AbstractRequest from '../lib/message/abstract_request'
-import RequestInterface from '../lib/message/request_interface'
+import AbstractRequest from '../lib/messages/abstract_request'
+import RequestInterface from '../lib/messages/request_interface'
 import AxiosClient from '../lib/extensions/axios_client'
 import Parameter from '../lib/parameter'
-import ResponseInterface from '../lib/message/response_interface'
+import ResponseInterface from '../lib/messages/response_interface'
 
 class GatewayConcrete extends AbstractGateway {
   getName(): string {
